@@ -1,0 +1,10 @@
+.task {
+	display: flex;
+	gap: 10px;
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	row-gap: 10px;
+}

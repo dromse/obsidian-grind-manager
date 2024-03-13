@@ -41,11 +41,11 @@ export function useTasks(): UseTasksProps {
 
 	/** Update task props and save to vault */
 	const updateTask = async (task: Task, newTask: Task) => {
+		const newStr = stringifyMiddlewares(newTask, middlewares);
+		console.table(newStr);
+
 		await vault.process(task.tFile, (data) =>
-			data.replace(
-				task.lineContent,
-				stringifyMiddlewares(newTask, middlewares),
-			),
+			data.replace(task.lineContent, newStr),
 		);
 
 		setTrigger((prev) => !prev);
@@ -117,7 +117,7 @@ function parseTasks(files: RawFile[]): Task[] {
 
 function stringifyMiddlewares(task: Task, middlewares: Middleware[]): string {
 	const taskString = middlewares.reduce(
-		(str, middleware) => (str += " " + middleware.stringify(task)),
+		(str, middleware) => (str += middleware.stringify(task)),
 		"",
 	);
 

@@ -16,6 +16,6 @@ const parse = (task: Task): Task => {
 };
 
 const stringify = (task: Task): string =>
-	task.every ? `#every/${task.every}` : "";
+	task.every ? ` #every/${task.every}` : "";
 
 export default { parse, stringify } as Middleware;

@@ -26,6 +26,6 @@ const parse = (task: Task): Task => {
 };
 
 const stringify = (task: Task): string =>
-	task.status ? `#status/${task.status}` : "";
+	task.status ? ` #status/${task.status}` : "";
 
 export default { parse, stringify } as Middleware;

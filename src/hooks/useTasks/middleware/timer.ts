@@ -20,6 +20,6 @@ const parse = (task: Task): Task => {
 };
 
 const stringify = (task: Task): string =>
-	task.timer ? `#timer/${task.timer.current}/${task.timer.goal}` : "";
+	task.timer ? ` #timer/${task.timer.current}/${task.timer.goal}` : "";
 
 export default { parse, stringify } as Middleware;

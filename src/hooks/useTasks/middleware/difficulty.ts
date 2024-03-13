@@ -29,6 +29,6 @@ const parse = (task: Task): Task => {
 };
 
 const stringify = (task: Task): string =>
-	task.difficulty ? `#diff/${task.difficulty}` : "";
+	task.difficulty ? ` #diff/${task.difficulty}` : "";
 
 export default { parse, stringify } as Middleware;

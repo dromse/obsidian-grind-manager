@@ -20,6 +20,6 @@ const parse = (task: Task): Task => {
 };
 
 const stringify = (task: Task): string =>
-	task.counter ? `#counter/${task.counter.current}/${task.counter.goal}` : "";
+	task.counter ? ` #counter/${task.counter.current}/${task.counter.goal}` : "";
 
 export default { parse, stringify } as Middleware;

@@ -17,6 +17,6 @@ const parse = (task: Task): Task => {
 };
 
 const stringify = (task: Task): string =>
-	task.completedAt ? task.completedAt : "";
+	task.completedAt ? ` ${task.completedAt}` : "";
 
 export default { parse, stringify } as Middleware;

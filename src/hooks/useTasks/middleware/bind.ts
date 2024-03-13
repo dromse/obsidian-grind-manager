@@ -15,6 +15,6 @@ const parse = (task: Task): Task => {
 	return { ...task, bind: match[1], body: newBody };
 };
 
-const stringify = (task: Task) => (task.bind ? `#bind/${task.bind}` : "");
+const stringify = (task: Task) => (task.bind ? ` #bind/${task.bind}` : "");
 
 export default { parse, stringify } as Middleware;

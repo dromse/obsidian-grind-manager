@@ -27,6 +27,7 @@ export default function TaskItem({ task, updateTask }: Props) {
 					updateTask(task, {
 						...task,
 						completed: !task.completed,
+						status: !task.completed ? "done" : "todo",
 					})
 				}
 			/>

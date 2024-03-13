@@ -1,0 +1,30 @@
+.badge {
+	border-radius: 9999px;
+	padding: 0 5px;
+	height: max-content;
+}
+
+.done {
+	color: #44e793;
+	background: #0a5631;
+}
+
+.denied {
+	color: #df3b3b;
+	background: #520202;
+}
+
+.todo {
+	color: #a9d5f1;
+	background: #333339;
+}
+
+.doing {
+	color: #5d449f;
+	background: #e9d8fd;
+}
+
+.delay {
+	color: #a36c29;
+	background: #fefcbf;
+}

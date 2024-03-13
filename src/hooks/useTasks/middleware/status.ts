@@ -1,14 +1,14 @@
 import { Middleware, Task } from "../types";
 import { cleanBody, findByRegex } from "../utils";
 
-export type Status = "todo" | "doing" | "done" | "denied" | "delayed";
+export type Status = "todo" | "doing" | "done" | "denied" | "delay";
 
 export const Statuses: Status[] = [
 	"todo",
 	"doing",
 	"done",
 	"denied",
-	"delayed",
+	"delay",
 ];
 
 const parse = (task: Task): Task => {

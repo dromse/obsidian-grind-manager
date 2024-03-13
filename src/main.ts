@@ -31,7 +31,7 @@ export default class GrindPlugin extends Plugin {
 		if (leaves.length > 0) {
 			leaf = leaves[0];
 		} else {
-			leaf = workspace.getLeaf("tab");
+			leaf = workspace.getRightLeaf(false);
 			await leaf?.setViewState({ type: MY_VIEW_TYPE, active: true });
 		}
 

@@ -1,12 +1,20 @@
-import { Plugin, WorkspaceLeaf } from "obsidian";
+import {
+	Plugin, WorkspaceLeaf
+} from "obsidian";
+import { CompletedFilterOption, StatusFilterOption } from "./components/TaskList";
 import { MyView, MY_VIEW_TYPE } from "./MyView";
+import GrindSettingTab from "./SettingTab";
 
-interface GrindPluginSettings {
-	mySetting: string;
-}
+export type GrindPluginSettings = {
+	limit: number | undefined;
+	completedFilter: CompletedFilterOption;
+	statusFilter: StatusFilterOption;
+};
 
 const DEFAULT_SETTINGS: GrindPluginSettings = {
-	mySetting: "default",
+	limit: 10,
+	completedFilter: "all",
+	statusFilter: "all",
 };
 
 export default class GrindPlugin extends Plugin {
@@ -15,7 +23,9 @@ export default class GrindPlugin extends Plugin {
 	async onload() {
 		await this.loadSettings();
 
-		this.registerView(MY_VIEW_TYPE, (leaf) => new MyView(leaf));
+		this.registerView(MY_VIEW_TYPE, (leaf) => new MyView(leaf, this.settings));
+
+		this.addSettingTab(new GrindSettingTab(this.app, this));
 
 		this.addRibbonIcon("list-todo", "Show Grind View", () => {
 			this.activateView();
@@ -40,7 +50,7 @@ export default class GrindPlugin extends Plugin {
 		}
 	}
 
-	onunload() { }
+	onunload() {}
 
 	async loadSettings() {
 		this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());

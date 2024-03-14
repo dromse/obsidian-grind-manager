@@ -28,4 +28,4 @@
 
 #### Defined in
 
-[src/main.ts:8](https://github.com/dromse/personal-grind-manager/blob/f78d691/src/main.ts#L8)
+[src/main.ts:8](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/main.ts#L8)

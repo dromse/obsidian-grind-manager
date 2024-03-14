@@ -52,7 +52,7 @@ PluginSettingTab.constructor
 
 #### Defined in
 
-src/SettingTab.ts:10
+[src/SettingTab.ts:10](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/SettingTab.ts#L10)
 
 ## Properties
 
@@ -94,7 +94,7 @@ ___
 
 #### Defined in
 
-src/SettingTab.ts:8
+[src/SettingTab.ts:8](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/SettingTab.ts#L8)
 
 ## Methods
 
@@ -112,7 +112,7 @@ PluginSettingTab.display
 
 #### Defined in
 
-src/SettingTab.ts:15
+[src/SettingTab.ts:15](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/SettingTab.ts#L15)
 
 ___
 

@@ -8,7 +8,8 @@
 		"build": "rm -rf build && tsc -noEmit -skipLibCheck && node esbuild.config.mjs production && cp manifest.json build && cat src/styles.css build/main.css > build/styles.css && rm build/main.css && touch build/.hotreload",
 		"esbuild": "esbuild main.js --bundle --outfile=build/main.js --format=cjs --external:obsidian",
 		"version": "node version-bump.mjs && git add manifest.json versions.json",
-		"watch": "nodemon --ignore build/ -e ts,tsx,css --exec \"pnpm build\" "
+		"watch": "nodemon --ignore build/ -e ts,tsx,css --exec \"pnpm build\" ",
+		"docs": "typedoc"
 	},
 	"keywords": [],
 	"author": "",
@@ -25,6 +26,8 @@
 		"nodemon": "^3.1.0",
 		"obsidian": "latest",
 		"tslib": "2.4.0",
+		"typedoc": "^0.25.12",
+		"typedoc-plugin-markdown": "^3.17.1",
 		"typescript": "4.7.4",
 		"typescript-plugin-css-modules": "^5.1.0"
 	},

@@ -1,15 +1,18 @@
 import { ItemView, WorkspaceLeaf } from "obsidian";
 import { createRoot, Root } from "react-dom/client";
 import { GrindView } from "./components/GrindView";
-import { AppContext } from "./context";
+import { AppContext, SettingsContext } from "./context";
+import { GrindPluginSettings } from "./main";
 
 export const MY_VIEW_TYPE = "grind-manager-view";
 
 export class MyView extends ItemView {
 	root: Root | null = null;
+	pluginSettings: GrindPluginSettings;
 
-	constructor(leaf: WorkspaceLeaf) {
+	constructor(leaf: WorkspaceLeaf, settings: GrindPluginSettings) {
 		super(leaf);
+		this.pluginSettings = settings;
 	}
 
 	getViewType() {
@@ -25,9 +28,11 @@ export class MyView extends ItemView {
 
 		this.root.render(
 			<AppContext.Provider value={this.app}>
-				<h1>Grind Manager</h1>
+				<SettingsContext.Provider value={this.pluginSettings}>
+					<h1>Grind Manager</h1>
 
-				<GrindView />
+					<GrindView />
+				</SettingsContext.Provider>
 			</AppContext.Provider>,
 		);
 	}

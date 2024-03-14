@@ -5,7 +5,7 @@ type Props = {
 
 export default function LimitFilter({ limit, setLimit }: Props) {
 	return (
-		<>
+		<div>
 			<label htmlFor="limit">Limit:</label>
 			<input
 				type="number"
@@ -19,6 +19,6 @@ export default function LimitFilter({ limit, setLimit }: Props) {
 					)
 				}
 			/>
-		</>
+		</div>
 	);
 };

@@ -1,6 +1,7 @@
 import { TFile, Vault } from "obsidian";
 import { useEffect, useState } from "react";
 import { useApp } from "..";
+import { ParseState } from "../types";
 import bind from "./middleware/bind";
 import body from "./middleware/body";
 import completed from "./middleware/completed";
@@ -13,19 +14,25 @@ import status from "./middleware/status";
 import timer from "./middleware/timer";
 import { Middleware, Task } from "./types";
 
-type ParseState = "parsing" | "parsed" | "error";
-
 type UseTasksProps = {
 	tasks: Task[];
-	isParsed: ParseState;
+	isTasksParsed: ParseState;
 	updateTask: (task: Task, newTask: Task) => void;
 };
 
+/**
+ * Hook for interaction with tasks in current vault
+ */
 export function useTasks(): UseTasksProps {
 	const [tasks, setTasks] = useState<Task[]>([]);
-	const [isParsed, setIsParsed] = useState<ParseState>("parsing");
+	const [isTasksParsed, setIsTasksParsed] = useState<ParseState>("parsing");
+	// TODO: I think i need to remove it in future.
 	const [trigger, setTrigger] = useState(false);
 
+	/**
+	 * Middlewares used for parsing tasks metadata and stringifying back to markdown line.
+	 * I don't need `body` to be in middlewares for parsing but for correct stringifying I added it.
+	 */
 	const middlewares = [
 		indention,
 		completed,
@@ -42,7 +49,6 @@ export function useTasks(): UseTasksProps {
 	/** Update task props and save to vault */
 	const updateTask = async (task: Task, newTask: Task) => {
 		const newStr = stringifyMiddlewares(newTask, middlewares);
-		console.table(newStr);
 
 		await vault.process(task.tFile, (data) =>
 			data.replace(task.lineContent, newStr),
@@ -54,9 +60,9 @@ export function useTasks(): UseTasksProps {
 	const app = useApp();
 
 	if (!app) {
-		setIsParsed("error");
+		setIsTasksParsed("error");
 
-		return { tasks, isParsed, updateTask };
+		return { tasks, isTasksParsed, updateTask };
 	}
 
 	const { vault } = app;
@@ -67,11 +73,11 @@ export function useTasks(): UseTasksProps {
 			const withMiddlewares = parseMiddlewares(parsedTasks, middlewares);
 
 			setTasks(withMiddlewares);
-			setIsParsed("parsed");
+			setIsTasksParsed("parsed");
 		});
 	}, [trigger]);
 
-	return { tasks, isParsed, updateTask };
+	return { tasks, isTasksParsed, updateTask };
 }
 
 type RawFile = {
@@ -79,6 +85,7 @@ type RawFile = {
 	content: string[];
 };
 
+/** Get all markdown files in vault with their content */
 async function getRawFiles(vault: Vault): Promise<RawFile[]> {
 	const files = Promise.all(
 		vault.getMarkdownFiles().map(async (file) => ({
@@ -90,6 +97,7 @@ async function getRawFiles(vault: Vault): Promise<RawFile[]> {
 	return files;
 }
 
+/** Parse all occurance of task line in `file` content and then returns task list */
 function parseTasksFromFile(file: RawFile): Task[] {
 	const tasks = file.content.reduce((acc, lineContent, index) => {
 		const regex = /- \[.\]/;
@@ -109,12 +117,27 @@ function parseTasksFromFile(file: RawFile): Task[] {
 	return tasks;
 }
 
+/** Iterates through all files, parse tasks from files and return all found tasks in `files`
+ * @param {RawFile[]} files - list of RawFile[]
+ *
+ * @returns {Task[]} all tasks in files
+ *
+ * @example
+ * const files = [{ tFile: {...}: TFile, content: ['- [ ] one simple task'] }]
+ *
+ * const tasks = parseTasks(files)
+ * -> [{ tFile: {...}, completed: false, lineNumber: 0, lineContent: '- [ ] one simple task', body: '- [ ] one simple task' }]
+ */
 function parseTasks(files: RawFile[]): Task[] {
-	const tasks = files.map((file) => parseTasksFromFile(file)).flat();
+	const tasks = files.reduce(
+		(acc, file) => [...acc, ...parseTasksFromFile(file)],
+		[],
+	);
 
 	return tasks;
 }
 
+/** Stringify task obj by middlewares */
 function stringifyMiddlewares(task: Task, middlewares: Middleware[]): string {
 	const taskString = middlewares.reduce(
 		(str, middleware) => (str += middleware.stringify(task)),
@@ -124,6 +147,7 @@ function stringifyMiddlewares(task: Task, middlewares: Middleware[]): string {
 	return taskString;
 }
 
+/** Iterate through all tasks and parse their middlewares and return new task list  */
 function parseMiddlewares(tasks: Task[], middlewares: Middleware[]): Task[] {
 	middlewares.forEach(
 		(middleware) => (tasks = tasks.map((task) => middleware.parse(task))),
@@ -132,6 +156,7 @@ function parseMiddlewares(tasks: Task[], middlewares: Middleware[]): Task[] {
 	return tasks;
 }
 
+/** Split content string by '\n' and return list of strings */
 function getLines(fileContent: string): string[] {
 	return fileContent.split("\n");
 }

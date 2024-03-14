@@ -1,4 +1,5 @@
 import { TFile } from "obsidian";
+import { useState } from "react";
 import { useApp } from "../../hooks";
 import { Task } from "../../hooks/useTasks/types";
 import StatusBadge from "../StatusBadge";
@@ -10,6 +11,8 @@ type Props = {
 };
 
 export default function TaskItem({ task, updateTask }: Props) {
+	const [completed, setCompleted] = useState<boolean>(task.completed || false);
+
 	const workspace = useApp()?.workspace;
 
 	if (!workspace) {
@@ -22,14 +25,17 @@ export default function TaskItem({ task, updateTask }: Props) {
 		<li className={styles.task}>
 			<input
 				type="checkbox"
-				checked={task.completed}
-				onChange={() =>
+				checked={completed}
+				onChange={() => {
+
 					updateTask(task, {
 						...task,
 						completed: !task.completed,
 						status: !task.completed ? "done" : "todo",
-					})
-				}
+					});
+
+					setCompleted(!task.completed);
+				}}
 			/>
 
 			<a onClick={() => openFile(task.tFile)}>{task.body}</a>

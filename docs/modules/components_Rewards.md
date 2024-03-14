@@ -26,4 +26,4 @@
 
 #### Defined in
 
-src/components/Rewards.tsx:4
+[src/components/Rewards.tsx:4](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/components/Rewards.tsx#L4)

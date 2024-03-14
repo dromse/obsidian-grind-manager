@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useSettings } from "../../hooks";
 import { Status } from "../../hooks/useTasks/middleware/status";
 import { Task } from "../../hooks/useTasks/types";
-import CompletedFilter from "./CompletedFilter";
-import LimitFilter from "./LimitFilter";
-import StatusFilter from "./StatusFilter";
+import {
+	CompletedFilter,
+	LimitFilter,
+	SearchFilter,
+	StatusFilter,
+} from "./Filters";
 import styles from "./styles.module.css";
 import TaskItem from "./TaskItem";
 
@@ -12,15 +16,26 @@ type Props = {
 	updateTask: (task: Task, newTask: Task) => void;
 };
 
-export type ICompletedFilter = "all" | "uncompleted" | "completed";
-export type IStatusFilter = "all" | Status
+export type CompletedFilterOption = "all" | "uncompleted" | "completed";
+export type StatusFilterOption = "all" | Status;
 
 export default function TaskList({ tasks, updateTask }: Props) {
 	const [limit, setLimit] = useState<number | undefined>(undefined);
 	const [currentCompletedFilter, setCurrentCompletedFilter] =
-		useState<ICompletedFilter>("all");
+		useState<CompletedFilterOption>("all");
 	const [currentStatusFilter, setCurrentStatusFilter] =
-		useState<IStatusFilter>("all");
+		useState<StatusFilterOption>("all");
+	const [searchFilter, setSearchFilter] = useState<string>("");
+
+	const settings = useSettings();
+
+	useEffect(() => {
+		if (settings) {
+			setLimit(settings.limit);
+			setCurrentCompletedFilter(settings.completedFilter);
+			setCurrentStatusFilter(settings.statusFilter);
+		}
+	}, []);
 
 	const filterByCompleted = (task: Task): boolean => {
 		if (task.completed === undefined) {
@@ -43,40 +58,64 @@ export default function TaskList({ tasks, updateTask }: Props) {
 	};
 
 	const filterByStatus = (task: Task): boolean => {
-		if (currentStatusFilter === 'all') {
-			return true
+		if (currentStatusFilter === "all") {
+			return true;
 		}
 
 		if (!task.status) {
-			return false
+			return false;
 		}
 
 		if (currentStatusFilter === task.status) {
-			return true
+			return true;
 		}
 
-		return false
-	}
+		return false;
+	};
 
-	console.log(tasks);
+	const filterBySearch = (task: Task): boolean =>
+		task.body.toLowerCase().includes(searchFilter);
+
+	const filteredTasks = useMemo(() => {
+		return tasks
+			.filter(filterByCompleted)
+			.filter(filterByStatus)
+			.filter(filterBySearch)
+			.slice(0, limit);
+	}, [tasks, filterByStatus, filterByCompleted, filterBySearch, limit]);
 
 	return (
 		<div>
-			<LimitFilter limit={limit} setLimit={setLimit} />
-			<CompletedFilter currentCompletedFilter={currentCompletedFilter} setCurrentCompletedFilter={setCurrentCompletedFilter} />
-			<StatusFilter currentStatusFilter={currentStatusFilter} setCurrentStatusFilter={setCurrentStatusFilter} />
+			<div className={`${styles.filters} ${styles.border}`}>
+				<SearchFilter
+					searchFilter={searchFilter}
+					setSearchFilter={setSearchFilter}
+				/>
+				<LimitFilter
+					limit={limit}
+					setLimit={setLimit}
+				/>
+				<CompletedFilter
+					currentCompletedFilter={currentCompletedFilter}
+					setCurrentCompletedFilter={setCurrentCompletedFilter}
+				/>
+				<StatusFilter
+					currentStatusFilter={currentStatusFilter}
+					setCurrentStatusFilter={setCurrentStatusFilter}
+				/>
+			</div>
 
-			<ul className={styles.list}>
-				{tasks
-					.filter(filterByCompleted)
-					.filter(filterByStatus)
-					.slice(0, limit)
-					.map((task) => (
+			<ul className={`${styles.list} ${styles.border}`}>
+				{filteredTasks.length > 0 ? (
+					filteredTasks.map((task) => (
 						<TaskItem
 							task={task}
 							updateTask={updateTask}
 						/>
-					))}
+					))
+				) : (
+					<p>Empty list.</p>
+				)}
 			</ul>
 		</div>
 	);

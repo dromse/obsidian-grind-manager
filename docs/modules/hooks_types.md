@@ -16,4 +16,4 @@
 
 #### Defined in
 
-src/hooks/types.ts:1
+[src/hooks/types.ts:1](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/hooks/types.ts#L1)

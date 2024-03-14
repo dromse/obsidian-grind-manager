@@ -23,7 +23,7 @@ Access `this.app` from different components through `useContext`
 
 #### Defined in
 
-[src/hooks/index.ts:7](https://github.com/dromse/personal-grind-manager/blob/f78d691/src/hooks/index.ts#L7)
+[src/hooks/index.ts:7](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/hooks/index.ts#L7)
 
 ___
 
@@ -37,4 +37,4 @@ ___
 
 #### Defined in
 
-[src/hooks/index.ts:11](https://github.com/dromse/personal-grind-manager/blob/f78d691/src/hooks/index.ts#L11)
+[src/hooks/index.ts:11](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/hooks/index.ts#L11)

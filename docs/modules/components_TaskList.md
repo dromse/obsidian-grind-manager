@@ -21,7 +21,7 @@
 
 #### Defined in
 
-[src/components/TaskList/index.tsx:19](https://github.com/dromse/personal-grind-manager/blob/f78d691/src/components/TaskList/index.tsx#L19)
+[src/components/TaskList/index.tsx:19](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/components/TaskList/index.tsx#L19)
 
 ___
 
@@ -31,7 +31,7 @@ ___
 
 #### Defined in
 
-[src/components/TaskList/index.tsx:20](https://github.com/dromse/personal-grind-manager/blob/f78d691/src/components/TaskList/index.tsx#L20)
+[src/components/TaskList/index.tsx:20](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/components/TaskList/index.tsx#L20)
 
 ## Functions
 
@@ -51,4 +51,4 @@ ___
 
 #### Defined in
 
-[src/components/TaskList/index.tsx:22](https://github.com/dromse/personal-grind-manager/blob/f78d691/src/components/TaskList/index.tsx#L22)
+[src/components/TaskList/index.tsx:22](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/components/TaskList/index.tsx#L22)

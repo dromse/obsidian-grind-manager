@@ -22,4 +22,4 @@ Hook for interaction with tasks in current vault
 
 #### Defined in
 
-[src/hooks/useTasks/index.ts:26](https://github.com/dromse/personal-grind-manager/blob/f78d691/src/hooks/useTasks/index.ts#L26)
+[src/hooks/useTasks/index.ts:26](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/hooks/useTasks/index.ts#L26)

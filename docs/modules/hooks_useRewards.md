@@ -22,4 +22,4 @@ Parse rewards from rewards.md from settings: title: string | price: number? | al
 
 #### Defined in
 
-src/hooks/useRewards/index.ts:17
+[src/hooks/useRewards/index.ts:17](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/hooks/useRewards/index.ts#L17)

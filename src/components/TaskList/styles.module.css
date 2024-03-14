@@ -7,5 +7,17 @@
 	display: flex;
 	flex-direction: column;
 	row-gap: 10px;
+	padding: 0;
 }
 
+.filters {
+	display: flex;
+	flex-direction: column;
+	row-gap: 10px;
+}
+
+.border {
+	border: 1px solid var(--text-normal);
+	border-radius: 10px;
+	padding: 10px;
+}

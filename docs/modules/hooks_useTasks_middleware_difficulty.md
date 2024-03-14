@@ -22,7 +22,7 @@
 
 #### Defined in
 
-[src/hooks/useTasks/middleware/difficulty.ts:4](https://github.com/dromse/personal-grind-manager/blob/f78d691/src/hooks/useTasks/middleware/difficulty.ts#L4)
+[src/hooks/useTasks/middleware/difficulty.ts:4](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/hooks/useTasks/middleware/difficulty.ts#L4)
 
 ## Variables
 
@@ -32,7 +32,7 @@
 
 #### Defined in
 
-[src/hooks/useTasks/middleware/difficulty.ts:13](https://github.com/dromse/personal-grind-manager/blob/f78d691/src/hooks/useTasks/middleware/difficulty.ts#L13)
+[src/hooks/useTasks/middleware/difficulty.ts:13](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/hooks/useTasks/middleware/difficulty.ts#L13)
 
 ___
 
@@ -42,7 +42,7 @@ ___
 
 #### Defined in
 
-[src/hooks/useTasks/middleware/difficulty.ts:6](https://github.com/dromse/personal-grind-manager/blob/f78d691/src/hooks/useTasks/middleware/difficulty.ts#L6)
+[src/hooks/useTasks/middleware/difficulty.ts:6](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/hooks/useTasks/middleware/difficulty.ts#L6)
 
 ___
 
@@ -52,4 +52,4 @@ ___
 
 #### Defined in
 
-[src/hooks/useTasks/middleware/difficulty.ts:34](https://github.com/dromse/personal-grind-manager/blob/f78d691/src/hooks/useTasks/middleware/difficulty.ts#L34)
+[src/hooks/useTasks/middleware/difficulty.ts:34](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/hooks/useTasks/middleware/difficulty.ts#L34)

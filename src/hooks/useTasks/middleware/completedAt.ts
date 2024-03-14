@@ -2,8 +2,7 @@ import { Middleware, Task } from "../types";
 import { cleanBody, findByRegex } from "../utils";
 
 const parse = (task: Task): Task => {
-	const regex =
-		/✅ \[\d{2}:\d{2}\/\d{4}-\d{2}-\d{2}\]\(Everyday\/\d{4}-\d{2}-\d{2}\.md\)/;
+	const regex = /✅ \[\[(\d{4}-\d{2}-\d{2})\|\1\|(\d{2}:\d{2})\]\]/;
 
 	const match = findByRegex(regex, task);
 

@@ -114,7 +114,7 @@ ___
 
 #### Defined in
 
-[src/main.ts:21](https://github.com/dromse/personal-grind-manager/blob/f78d691/src/main.ts#L21)
+[src/main.ts:21](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/main.ts#L21)
 
 ## Methods
 
@@ -128,7 +128,7 @@ ___
 
 #### Defined in
 
-[src/main.ts:35](https://github.com/dromse/personal-grind-manager/blob/f78d691/src/main.ts#L35)
+[src/main.ts:35](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/main.ts#L35)
 
 ___
 
@@ -332,7 +332,7 @@ ___
 
 #### Defined in
 
-[src/main.ts:55](https://github.com/dromse/personal-grind-manager/blob/f78d691/src/main.ts#L55)
+[src/main.ts:55](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/main.ts#L55)
 
 ___
 
@@ -374,7 +374,7 @@ Plugin.onload
 
 #### Defined in
 
-[src/main.ts:23](https://github.com/dromse/personal-grind-manager/blob/f78d691/src/main.ts#L23)
+[src/main.ts:23](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/main.ts#L23)
 
 ___
 
@@ -392,7 +392,7 @@ Plugin.onunload
 
 #### Defined in
 
-[src/main.ts:53](https://github.com/dromse/personal-grind-manager/blob/f78d691/src/main.ts#L53)
+[src/main.ts:53](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/main.ts#L53)
 
 ___
 
@@ -868,7 +868,7 @@ ___
 
 #### Defined in
 
-[src/main.ts:59](https://github.com/dromse/personal-grind-manager/blob/f78d691/src/main.ts#L59)
+[src/main.ts:59](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/main.ts#L59)
 
 ___
 

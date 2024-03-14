@@ -22,6 +22,7 @@ pnpm run docs
 
 - [obsidian-tasks](https://github.com/obsidian-tasks-group/obsidian-tasks)
 - [obsidian-pomodoro-timer](https://github.com/eatgrass/obsidian-pomodoro-timer)
+- [Habitica](https://habitica.com/)
 
 ## Can I contribute?
 

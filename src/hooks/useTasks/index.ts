@@ -1,7 +1,7 @@
 import { TFile, Vault } from "obsidian";
 import { useEffect, useState } from "react";
 import { useApp } from "..";
-import { ParseState } from "../types";
+import { ParseState, RawFile } from "../types";
 import bind from "./middleware/bind";
 import body from "./middleware/body";
 import completed from "./middleware/completed";
@@ -23,7 +23,7 @@ type UseTasksProps = {
 /**
  * Hook for interaction with tasks in current vault
  */
-export function useTasks(): UseTasksProps {
+export default function useTasks(): UseTasksProps {
 	const [tasks, setTasks] = useState<Task[]>([]);
 	const [isTasksParsed, setIsTasksParsed] = useState<ParseState>("parsing");
 	// TODO: I think i need to remove it in future.
@@ -80,10 +80,6 @@ export function useTasks(): UseTasksProps {
 	return { tasks, isTasksParsed, updateTask };
 }
 
-type RawFile = {
-	tFile: TFile;
-	content: string[];
-};
 
 /** Get all markdown files in vault with their content */
 async function getRawFiles(vault: Vault): Promise<RawFile[]> {

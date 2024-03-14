@@ -1,9 +1,7 @@
-import { useTasks } from "../hooks/useTasks";
+import { useTasks } from "../hooks";
 import TaskList from "./TaskList";
 
-type Props = {};
-
-export default function TaskView({}: Props) {
+export default function TaskView() {
 	const { tasks, isTasksParsed, updateTask } = useTasks();
 
 	if (isTasksParsed === "parsing") {

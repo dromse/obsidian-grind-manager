@@ -1,20 +1,17 @@
 import { useEffect, useState } from "react";
 import { useApp } from "..";
-import { ParseState } from "../types";
+import { ParseState, RawFile } from "../types";
 
 const pathToRewards = "/Misc/rewards.md";
 
 type Reward = {
 	title: string;
 	price?: number;
-	allowTodayQuantity?: number;
 	desc?: string;
 };
 
-/**
- * Parse rewards from rewards.md from settings: title: string | price: number? | allowTodayQuantity: number? | desc: string?
- */
-export function useRewards() {
+/** Hook for interacting with rewards list */
+export default function useRewards() {
 	const [isRewardsParsed, setIsRewardsParsed] =
 		useState<ParseState>("parsing");
 	const app = useApp()?.vault;
@@ -27,7 +24,20 @@ export function useRewards() {
 		return { rewards, isRewardsParsed };
 	}
 
-	useEffect(() => {}, []);
+	useEffect(() => { }, []);
 
 	return { rewards };
+}
+
+/**
+ * Parse rewards from rewards.md from settings
+ *
+ * @example
+ * // In file: ice cream -> { title: 'ice cream', price: 1 }
+ * // In file: ice cream | 10 -> { title: 'ice cream', price: 10 }
+ * // In file: ice cream | 10 | be careful with it -> { title: 'ice cream', price: 10, desc: 'be careful with it' }
+ * // In file: ice cream | okay be like that -> {title: 'ice cream', price: 1, desc: 'okay be like that' }
+ */
+function parseRewards(file: RawFile): Reward[] {
+	return [];
 }

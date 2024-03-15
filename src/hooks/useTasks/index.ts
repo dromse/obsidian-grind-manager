@@ -1,7 +1,8 @@
-import { TFile, Vault } from "obsidian";
+import { Vault } from "obsidian";
 import { useEffect, useState } from "react";
 import { useApp } from "..";
 import { ParseState, RawFile } from "../types";
+import { getLines } from "../utils";
 import bind from "./middleware/bind";
 import body from "./middleware/body";
 import completed from "./middleware/completed";
@@ -47,7 +48,7 @@ export default function useTasks(): UseTasksProps {
 	];
 
 	/** Update task props and save to vault */
-	const updateTask = async (task: Task, newTask: Task) => {
+	async function updateTask(task: Task, newTask: Task) {
 		const newStr = stringifyMiddlewares(newTask, middlewares);
 
 		await vault.process(task.tFile, (data) =>
@@ -55,7 +56,7 @@ export default function useTasks(): UseTasksProps {
 		);
 
 		setTrigger((prev) => !prev);
-	};
+	}
 
 	const app = useApp();
 
@@ -79,7 +80,6 @@ export default function useTasks(): UseTasksProps {
 
 	return { tasks, isTasksParsed, updateTask };
 }
-
 
 /** Get all markdown files in vault with their content */
 async function getRawFiles(vault: Vault): Promise<RawFile[]> {
@@ -150,9 +150,4 @@ function parseMiddlewares(tasks: Task[], middlewares: Middleware[]): Task[] {
 	);
 
 	return tasks;
-}
-
-/** Split content string by '\n' and return list of strings */
-function getLines(fileContent: string): string[] {
-	return fileContent.split("\n");
 }

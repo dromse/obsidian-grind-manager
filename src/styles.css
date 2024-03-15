@@ -7,11 +7,15 @@ If your plugin does not need CSS, delete this file.
 
 */
 
-li { 
+li {
 	list-style-type: none;
 }
 
 .todo {
 	display: flex;
 	align-items: center;
+}
+
+ul {
+	padding: 0;
 }

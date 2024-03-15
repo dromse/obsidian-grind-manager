@@ -5,11 +5,12 @@ import { GrindPluginSettings } from "../main";
 import { default as useRewards } from "./useRewards";
 import { default as useTasks } from "./useTasks";
 
-/** Access `this.app` from different components through `useContext` */
+/** Access `app` from different components through `useContext` */
 export const useApp = (): App | undefined => {
 	return useContext(AppContext);
 };
 
+/** Access `settings` from different components through `useContext` */
 export const useSettings = (): GrindPluginSettings | undefined => {
 	return useContext(SettingsContext);
 };

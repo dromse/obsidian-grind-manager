@@ -4,7 +4,7 @@ import Rewards from "./Rewards";
 import Tabs from "./Tabs";
 import Tasks from "./Tasks";
 
-export const GrindView = () => {
+export const GrindApp = () => {
 	const tabs = [
 		{ title: "Tasks", view: Tasks },
 		{ title: "Recur", view: Recur },

@@ -1,6 +1,6 @@
 import { ItemView, WorkspaceLeaf } from "obsidian";
 import { createRoot, Root } from "react-dom/client";
-import { GrindView } from "./components/GrindView";
+import { GrindApp } from "./components/GrindApp";
 import { AppContext, SettingsContext } from "./context";
 import { GrindPluginSettings } from "./main";
 
@@ -31,7 +31,7 @@ export class MyView extends ItemView {
 				<SettingsContext.Provider value={this.pluginSettings}>
 					<h1>Grind Manager</h1>
 
-					<GrindView />
+					<GrindApp />
 				</SettingsContext.Provider>
 			</AppContext.Provider>,
 		);

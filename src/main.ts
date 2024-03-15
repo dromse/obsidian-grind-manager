@@ -9,12 +9,14 @@ export type GrindPluginSettings = {
 	limit: number | undefined;
 	completedFilter: CompletedFilterOption;
 	statusFilter: StatusFilterOption;
+	pathToRewards: string;
 };
 
 const DEFAULT_SETTINGS: GrindPluginSettings = {
 	limit: 10,
 	completedFilter: "all",
 	statusFilter: "all",
+	pathToRewards: "rewards.md",
 };
 
 export default class GrindPlugin extends Plugin {

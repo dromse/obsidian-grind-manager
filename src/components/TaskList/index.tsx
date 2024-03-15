@@ -78,8 +78,8 @@ export default function TaskList({ tasks, updateTask }: Props) {
 
 	const filteredTasks = useMemo(() => {
 		return tasks
-			.filter(filterByCompleted)
 			.filter(filterByStatus)
+			.filter(filterByCompleted)
 			.filter(filterBySearch)
 			.slice(0, limit);
 	}, [tasks, filterByStatus, filterByCompleted, filterBySearch, limit]);

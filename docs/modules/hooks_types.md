@@ -7,6 +7,7 @@
 ### Type Aliases
 
 - [ParseState](hooks_types.md#parsestate)
+- [RawFile](hooks_types.md#rawfile)
 
 ## Type Aliases
 
@@ -16,4 +17,21 @@
 
 #### Defined in
 
-[src/hooks/types.ts:1](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/hooks/types.ts#L1)
+[src/hooks/types.ts:3](https://github.com/dromse/personal-grind-manager/blob/781019d/src/hooks/types.ts#L3)
+
+___
+
+### RawFile
+
+Ƭ **RawFile**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `content` | `string`[] |
+| `tFile` | `TFile` |
+
+#### Defined in
+
+[src/hooks/types.ts:5](https://github.com/dromse/personal-grind-manager/blob/781019d/src/hooks/types.ts#L5)

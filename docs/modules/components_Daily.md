@@ -26,4 +26,4 @@
 
 #### Defined in
 
-[src/components/Daily.tsx:5](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/components/Daily.tsx#L5)
+[src/components/Daily.tsx:5](https://github.com/dromse/personal-grind-manager/blob/781019d/src/components/Daily.tsx#L5)

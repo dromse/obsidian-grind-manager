@@ -6,20 +6,25 @@
 
 ### Functions
 
-- [useRewards](hooks_useRewards.md#userewards)
+- [default](hooks_useRewards.md#default)
 
 ## Functions
 
-### useRewards
+### default
 
-▸ **useRewards**(): \{ `isRewardsParsed`: [`ParseState`](hooks_types.md#parsestate) ; `rewards`: `Reward`[]  } \| \{ `isRewardsParsed`: `undefined` ; `rewards`: `Reward`[]  }
+▸ **default**(): `Object`
 
-Parse rewards from rewards.md from settings: title: string | price: number? | allowTodayQuantity: number? | desc: string?
+Hook for interacting with rewards list
 
 #### Returns
 
-\{ `isRewardsParsed`: [`ParseState`](hooks_types.md#parsestate) ; `rewards`: `Reward`[]  } \| \{ `isRewardsParsed`: `undefined` ; `rewards`: `Reward`[]  }
+`Object`
+
+| Name | Type |
+| :------ | :------ |
+| `isRewardsParsed` | [`ParseState`](hooks_types.md#parsestate) |
+| `rewards` | `Reward`[] |
 
 #### Defined in
 
-[src/hooks/useRewards/index.ts:17](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/hooks/useRewards/index.ts#L17)
+[src/hooks/useRewards/index.ts:13](https://github.com/dromse/personal-grind-manager/blob/781019d/src/hooks/useRewards/index.ts#L13)

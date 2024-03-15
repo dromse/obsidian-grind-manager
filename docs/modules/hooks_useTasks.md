@@ -6,13 +6,13 @@
 
 ### Functions
 
-- [useTasks](hooks_useTasks.md#usetasks)
+- [default](hooks_useTasks.md#default)
 
 ## Functions
 
-### useTasks
+### default
 
-▸ **useTasks**(): `UseTasksProps`
+▸ **default**(): `UseTasksProps`
 
 Hook for interaction with tasks in current vault
 
@@ -22,4 +22,4 @@ Hook for interaction with tasks in current vault
 
 #### Defined in
 
-[src/hooks/useTasks/index.ts:26](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/hooks/useTasks/index.ts#L26)
+[src/hooks/useTasks/index.ts:27](https://github.com/dromse/personal-grind-manager/blob/781019d/src/hooks/useTasks/index.ts#L27)

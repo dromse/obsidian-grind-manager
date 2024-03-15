@@ -26,4 +26,4 @@
 
 #### Defined in
 
-[src/components/TaskList/Filters/SearchFilter.tsx:6](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/components/TaskList/Filters/SearchFilter.tsx#L6)
+[src/components/TaskList/Filters/SearchFilter.tsx:6](https://github.com/dromse/personal-grind-manager/blob/781019d/src/components/TaskList/Filters/SearchFilter.tsx#L6)

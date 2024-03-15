@@ -26,4 +26,4 @@
 
 #### Defined in
 
-[src/components/Recur.tsx:5](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/components/Recur.tsx#L5)
+[src/components/Recur.tsx:5](https://github.com/dromse/personal-grind-manager/blob/781019d/src/components/Recur.tsx#L5)

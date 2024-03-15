@@ -24,7 +24,7 @@
 
 #### Defined in
 
-[src/hooks/useTasks/types.ts:23](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/hooks/useTasks/types.ts#L23)
+[src/hooks/useTasks/types.ts:23](https://github.com/dromse/personal-grind-manager/blob/781019d/src/hooks/useTasks/types.ts#L23)
 
 ___
 
@@ -56,4 +56,4 @@ ___
 
 #### Defined in
 
-[src/hooks/useTasks/types.ts:5](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/hooks/useTasks/types.ts#L5)
+[src/hooks/useTasks/types.ts:5](https://github.com/dromse/personal-grind-manager/blob/781019d/src/hooks/useTasks/types.ts#L5)

@@ -24,8 +24,9 @@
 | :------ | :------ |
 | `completedFilter` | [`CompletedFilterOption`](components_TaskList.md#completedfilteroption) |
 | `limit` | `number` \| `undefined` |
+| `pathToRewards` | `string` |
 | `statusFilter` | [`StatusFilterOption`](components_TaskList.md#statusfilteroption) |
 
 #### Defined in
 
-[src/main.ts:8](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/main.ts#L8)
+[src/main.ts:8](https://github.com/dromse/personal-grind-manager/blob/781019d/src/main.ts#L8)

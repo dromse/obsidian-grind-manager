@@ -76,7 +76,7 @@ ItemView.constructor
 
 #### Defined in
 
-[src/MyView.tsx:13](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/MyView.tsx#L13)
+[src/MyView.tsx:13](https://github.com/dromse/personal-grind-manager/blob/781019d/src/MyView.tsx#L13)
 
 ## Properties
 
@@ -176,7 +176,7 @@ ___
 
 #### Defined in
 
-[src/MyView.tsx:11](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/MyView.tsx#L11)
+[src/MyView.tsx:11](https://github.com/dromse/personal-grind-manager/blob/781019d/src/MyView.tsx#L11)
 
 ___
 
@@ -186,7 +186,7 @@ ___
 
 #### Defined in
 
-[src/MyView.tsx:10](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/MyView.tsx#L10)
+[src/MyView.tsx:10](https://github.com/dromse/personal-grind-manager/blob/781019d/src/MyView.tsx#L10)
 
 ___
 
@@ -292,7 +292,7 @@ ItemView.getDisplayText
 
 #### Defined in
 
-[src/MyView.tsx:22](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/MyView.tsx#L22)
+[src/MyView.tsx:22](https://github.com/dromse/personal-grind-manager/blob/781019d/src/MyView.tsx#L22)
 
 ___
 
@@ -364,7 +364,7 @@ ItemView.getViewType
 
 #### Defined in
 
-[src/MyView.tsx:18](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/MyView.tsx#L18)
+[src/MyView.tsx:18](https://github.com/dromse/personal-grind-manager/blob/781019d/src/MyView.tsx#L18)
 
 ___
 
@@ -402,7 +402,7 @@ ItemView.onClose
 
 #### Defined in
 
-[src/MyView.tsx:40](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/MyView.tsx#L40)
+[src/MyView.tsx:40](https://github.com/dromse/personal-grind-manager/blob/781019d/src/MyView.tsx#L40)
 
 ___
 
@@ -420,7 +420,7 @@ ItemView.onOpen
 
 #### Defined in
 
-[src/MyView.tsx:26](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/MyView.tsx#L26)
+[src/MyView.tsx:26](https://github.com/dromse/personal-grind-manager/blob/781019d/src/MyView.tsx#L26)
 
 ___
 

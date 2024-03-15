@@ -4,10 +4,27 @@
 
 ## Table of contents
 
+### References
+
+- [useRewards](hooks.md#userewards)
+- [useTasks](hooks.md#usetasks)
+
 ### Functions
 
 - [useApp](hooks.md#useapp)
 - [useSettings](hooks.md#usesettings)
+
+## References
+
+### useRewards
+
+Renames and re-exports [default](hooks_useRewards.md#default)
+
+___
+
+### useTasks
+
+Renames and re-exports [default](hooks_useTasks.md#default)
 
 ## Functions
 
@@ -15,7 +32,7 @@
 
 ▸ **useApp**(): `undefined` \| `App`
 
-Access `this.app` from different components through `useContext`
+Access `app` from different components through `useContext`
 
 #### Returns
 
@@ -23,7 +40,7 @@ Access `this.app` from different components through `useContext`
 
 #### Defined in
 
-[src/hooks/index.ts:7](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/hooks/index.ts#L7)
+[src/hooks/index.ts:9](https://github.com/dromse/personal-grind-manager/blob/781019d/src/hooks/index.ts#L9)
 
 ___
 
@@ -31,10 +48,12 @@ ___
 
 ▸ **useSettings**(): `undefined` \| [`GrindPluginSettings`](main.md#grindpluginsettings)
 
+Access `settings` from different components through `useContext`
+
 #### Returns
 
 `undefined` \| [`GrindPluginSettings`](main.md#grindpluginsettings)
 
 #### Defined in
 
-[src/hooks/index.ts:11](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/hooks/index.ts#L11)
+[src/hooks/index.ts:14](https://github.com/dromse/personal-grind-manager/blob/781019d/src/hooks/index.ts#L14)

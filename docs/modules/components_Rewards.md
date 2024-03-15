@@ -12,13 +12,7 @@
 
 ### default
 
-▸ **default**(`«destructured»`): `Element`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `«destructured»` | `Props` |
+▸ **default**(): `Element`
 
 #### Returns
 
@@ -26,4 +20,4 @@
 
 #### Defined in
 
-[src/components/Rewards.tsx:4](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/components/Rewards.tsx#L4)
+[src/components/Rewards/index.tsx:4](https://github.com/dromse/personal-grind-manager/blob/781019d/src/components/Rewards/index.tsx#L4)

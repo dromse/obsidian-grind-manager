@@ -26,4 +26,4 @@
 
 #### Defined in
 
-[src/components/Tabs/index.tsx:13](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/components/Tabs/index.tsx#L13)
+[src/components/Tabs/index.tsx:13](https://github.com/dromse/personal-grind-manager/blob/781019d/src/components/Tabs/index.tsx#L13)

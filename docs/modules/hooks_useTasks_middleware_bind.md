@@ -16,4 +16,4 @@
 
 #### Defined in
 
-[src/hooks/useTasks/middleware/bind.ts:20](https://github.com/dromse/personal-grind-manager/blob/93620cd/src/hooks/useTasks/middleware/bind.ts#L20)
+[src/hooks/useTasks/middleware/bind.ts:20](https://github.com/dromse/personal-grind-manager/blob/781019d/src/hooks/useTasks/middleware/bind.ts#L20)

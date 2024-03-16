@@ -1,7 +1,8 @@
+import { Plugin, WorkspaceLeaf } from "obsidian";
 import {
-	Plugin, WorkspaceLeaf
-} from "obsidian";
-import { CompletedFilterOption, StatusFilterOption } from "./components/TaskList";
+	CompletedFilterOption,
+	StatusFilterOption
+} from "./components/Tasks/TaskList";
 import { MyView, MY_VIEW_TYPE } from "./MyView";
 import GrindSettingTab from "./SettingTab";
 
@@ -9,14 +10,18 @@ export type GrindPluginSettings = {
 	limit: number | undefined;
 	completedFilter: CompletedFilterOption;
 	statusFilter: StatusFilterOption;
+	isRecurTasks: boolean;
 	pathToRewards: string;
+	pathToHistory: string;
 };
 
-const DEFAULT_SETTINGS: GrindPluginSettings = {
+export const DEFAULT_SETTINGS: GrindPluginSettings = {
 	limit: 10,
 	completedFilter: "all",
 	statusFilter: "all",
+	isRecurTasks: false,
 	pathToRewards: "rewards.md",
+	pathToHistory: "history.md",
 };
 
 export default class GrindPlugin extends Plugin {

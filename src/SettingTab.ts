@@ -2,9 +2,9 @@ import { App, PluginSettingTab, Setting } from "obsidian";
 import {
 	CompletedFilterOption,
 	StatusFilterOption
-} from "./components/TaskList";
+} from "./components/Tasks/TaskList";
 import { Statuses } from "./hooks/useTasks/middleware/status";
-import GrindPlugin from "./main";
+import GrindPlugin, { DEFAULT_SETTINGS } from "./main";
 
 /** Class for Setting Tab where user can set default filtering settings for `Grind Manager` */
 export default class GrindSettingTab extends PluginSettingTab {
@@ -20,7 +20,7 @@ export default class GrindSettingTab extends PluginSettingTab {
 
 		containerEl.empty();
 
-		new Setting(containerEl).setName("Default limit: ").addText((text) =>
+		new Setting(containerEl).setName("Default limit").addText((text) =>
 			text
 				.setPlaceholder("Only number")
 				.setValue(String(this.plugin.settings.limit))
@@ -35,7 +35,7 @@ export default class GrindSettingTab extends PluginSettingTab {
 		Statuses.forEach((status) => (statusFilterOptions[status] = status));
 
 		new Setting(containerEl)
-			.setName("Default status filter: ")
+			.setName("Default status filter")
 			.addDropdown((dropDown) =>
 				dropDown
 					.addOption("all", "all")
@@ -48,7 +48,7 @@ export default class GrindSettingTab extends PluginSettingTab {
 			);
 
 		new Setting(containerEl)
-			.setName("Default completed filter: ")
+			.setName("Default completed filter")
 			.addDropdown((dropDown) =>
 				dropDown
 					.addOption("all", "all")
@@ -63,20 +63,44 @@ export default class GrindSettingTab extends PluginSettingTab {
 			);
 
 		new Setting(containerEl)
-			.setName("Path to rewards file: ")
-			.addText((text) =>
-				text
-					.setPlaceholder("path/to/rewards.md")
-					.setValue(String(this.plugin.settings.pathToRewards))
+			.setName("Show recurring tasks by default?")
+			.addToggle((toggle) =>
+				toggle
+					.setValue(this.plugin.settings.isRecurTasks)
 					.onChange(async (value) => {
-						const trimmedValue = value.trim();
-
-						this.plugin.settings.pathToRewards = trimmedValue
-							? trimmedValue
-							: "rewards.md";
-
+						this.plugin.settings.isRecurTasks = value;
 						await this.plugin.saveSettings();
 					}),
 			);
+
+		new Setting(containerEl).setName("Path to rewards file").addText((text) =>
+			text
+				.setPlaceholder("path/to/rewards.md")
+				.setValue(String(this.plugin.settings.pathToRewards))
+				.onChange(async (value) => {
+					const trimmedValue = value.trim();
+
+					this.plugin.settings.pathToRewards = trimmedValue
+						? trimmedValue
+						: DEFAULT_SETTINGS.pathToRewards;
+
+					await this.plugin.saveSettings();
+				}),
+		);
+
+		new Setting(containerEl).setName("Path to history file").addText((text) =>
+			text
+				.setPlaceholder("path/to/history.md")
+				.setValue(String(this.plugin.settings.pathToHistory))
+				.onChange(async (value) => {
+					const trimmedValue = value.trim();
+
+					this.plugin.settings.pathToHistory = trimmedValue
+						? trimmedValue
+						: DEFAULT_SETTINGS.pathToHistory;
+
+					await this.plugin.saveSettings();
+				}),
+		);
 	}
 }

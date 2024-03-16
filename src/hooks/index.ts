@@ -2,6 +2,7 @@ import { App } from "obsidian";
 import { useContext } from "react";
 import { AppContext, SettingsContext } from "../context";
 import { GrindPluginSettings } from "../main";
+import { default as useHistory } from "./useHistory";
 import { default as useRewards } from "./useRewards";
 import { default as useTasks } from "./useTasks";
 
@@ -15,4 +16,4 @@ export const useSettings = (): GrindPluginSettings | undefined => {
 	return useContext(SettingsContext);
 };
 
-export { useRewards, useTasks };
+export { useRewards, useTasks, useHistory };

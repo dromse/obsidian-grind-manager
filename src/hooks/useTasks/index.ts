@@ -2,6 +2,7 @@ import { Vault } from "obsidian";
 import { useEffect, useState } from "react";
 import { useApp } from "..";
 import { ParseState, RawFile } from "../types";
+import useHistory from "../useHistory";
 import { getLines } from "../utils";
 import bind from "./middleware/bind";
 import body from "./middleware/body";
@@ -27,7 +28,6 @@ type UseTasksProps = {
 export default function useTasks(): UseTasksProps {
 	const [tasks, setTasks] = useState<Task[]>([]);
 	const [isTasksParsed, setIsTasksParsed] = useState<ParseState>("parsing");
-	// TODO: I think i need to remove it in future.
 	const [trigger, setTrigger] = useState(false);
 
 	/**

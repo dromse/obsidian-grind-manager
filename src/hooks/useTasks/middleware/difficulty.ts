@@ -3,16 +3,16 @@ import { cleanBody, findByRegex } from "../utils";
 
 export type Difficulty = "trivial" | "easy" | "medium" | "hard";
 
-export const DifficultyPrices: { title: Difficulty; price: number }[] = [
-	{ title: "trivial", price: 0.1 },
-	{ title: "easy", price: 1 },
-	{ title: "medium", price: 2.5 },
-	{ title: "hard", price: 5 },
-];
+export const DifficultyPrices = {
+	trivial: 0.1,
+	easy: 1,
+	medium: 2.5,
+	hard: 5,
+};
 
-export const Difficulties: Difficulty[] = DifficultyPrices.map(
-	(diff) => diff.title,
-);
+export const Difficulties: Difficulty[] = Object.keys(
+	DifficultyPrices,
+) as Difficulty[];
 
 const parse = (task: Task): Task => {
 	const regex = new RegExp(`#diff/(${Difficulties.join("|")})`);

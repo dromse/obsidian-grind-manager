@@ -1,7 +1,7 @@
-import { useTasks } from "../hooks";
+import { useTasks } from "../../hooks";
 import TaskList from "./TaskList";
 
-export default function TaskView() {
+export default function Tasks() {
 	const { tasks, isTasksParsed, updateTask } = useTasks();
 
 	if (isTasksParsed === "parsing") {

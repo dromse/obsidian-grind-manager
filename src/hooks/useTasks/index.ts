@@ -2,7 +2,6 @@ import { Vault } from "obsidian";
 import { useEffect, useState } from "react";
 import { useApp } from "..";
 import { ParseState, RawFile } from "../types";
-import useHistory from "../useHistory";
 import { getLines } from "../utils";
 import bind from "./middleware/bind";
 import body from "./middleware/body";

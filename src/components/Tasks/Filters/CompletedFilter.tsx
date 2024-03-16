@@ -1,4 +1,4 @@
-import { CompletedFilterOption } from "..";
+import { CompletedFilterOption } from "../TaskList";
 
 type Props = {
 	currentCompletedFilter: CompletedFilterOption;

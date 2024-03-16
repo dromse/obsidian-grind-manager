@@ -6,8 +6,9 @@ import {
 	CompletedFilter,
 	LimitFilter,
 	SearchFilter,
-	StatusFilter,
+	StatusFilter
 } from "./Filters";
+import RecurFilter from "./Filters/RecurFilter";
 import styles from "./styles.module.css";
 import TaskItem from "./TaskItem";
 
@@ -26,6 +27,7 @@ export default function TaskList({ tasks, updateTask }: Props) {
 	const [currentStatusFilter, setCurrentStatusFilter] =
 		useState<StatusFilterOption>("all");
 	const [searchFilter, setSearchFilter] = useState<string>("");
+	const [isRecur, setIsRecur] = useState<boolean>(false);
 
 	const settings = useSettings();
 
@@ -34,27 +36,20 @@ export default function TaskList({ tasks, updateTask }: Props) {
 			setLimit(settings.limit);
 			setCurrentCompletedFilter(settings.completedFilter);
 			setCurrentStatusFilter(settings.statusFilter);
+			setIsRecur(settings.isRecurTasks)
 		}
 	}, []);
 
 	const filterByCompleted = (task: Task): boolean => {
-		if (task.completed === undefined) {
-			return false;
-		}
-
-		if (currentCompletedFilter === "all") {
-			return true;
-		}
-
 		if (currentCompletedFilter === "completed") {
-			return task.completed;
+			return !!task.completed;
 		}
 
 		if (currentCompletedFilter === "uncompleted") {
 			return !task.completed;
 		}
 
-		return false;
+		return true;
 	};
 
 	const filterByStatus = (task: Task): boolean => {
@@ -76,10 +71,13 @@ export default function TaskList({ tasks, updateTask }: Props) {
 	const filterBySearch = (task: Task): boolean =>
 		task.body.toLowerCase().includes(searchFilter);
 
+	const filterByRecurrance = (task: Task): boolean => isRecur ? !!task.every && task.every === 'day' : true;
+
 	const filteredTasks = useMemo(() => {
 		return tasks
-			.filter(filterByStatus)
+			.filter(filterByRecurrance)
 			.filter(filterByCompleted)
+			.filter(filterByStatus)
 			.filter(filterBySearch)
 			.slice(0, limit);
 	}, [tasks, filterByStatus, filterByCompleted, filterBySearch, limit]);
@@ -102,6 +100,10 @@ export default function TaskList({ tasks, updateTask }: Props) {
 				<StatusFilter
 					currentStatusFilter={currentStatusFilter}
 					setCurrentStatusFilter={setCurrentStatusFilter}
+				/>
+				<RecurFilter
+					isRecur={isRecur}
+					setIsRecur={setIsRecur}
 				/>
 			</div>
 

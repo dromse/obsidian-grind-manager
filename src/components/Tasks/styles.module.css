@@ -1,6 +1,7 @@
 .task {
 	display: flex;
 	gap: 10px;
+	align-items: center;
 }
 
 .list {
@@ -19,4 +20,24 @@
 	border: 1px solid var(--text-normal);
 	border-radius: 10px;
 	padding: 10px;
+}
+
+.filter {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.counter {
+	margin-left: auto;
+	display: flex;
+	gap: 10px;
+
+	& button {
+		width: 50px;
+	}
+}
+
+.select {
+	margin-left: auto;
 }

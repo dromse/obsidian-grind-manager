@@ -1,4 +1,4 @@
-import { StatusFilterOption } from "..";
+import { StatusFilterOption } from "../TaskList";
 import { Statuses } from "../../../hooks/useTasks/middleware/status";
 
 type Props = {

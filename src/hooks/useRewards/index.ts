@@ -28,26 +28,19 @@ export default function useRewards() {
 	const { vault } = app;
 
 	useEffect(() => {
-		let tFile;
-
 		if (settings) {
-			tFile = vault.getFileByPath(settings.pathToRewards);
+			const tFile = vault.getFileByPath(settings.pathToRewards);
 
-		} else {
-			tFile = vault.getFileByPath("rewards.md");
+			if (tFile) {
+				vault.read(tFile).then((content) => {
+					const rewards = parseRewards(content);
+
+					setRewards(rewards);
+
+					setIsRewardsParsed("parsed");
+				});
+			}
 		}
-
-		if (tFile) {
-			vault.read(tFile).then((content) => {
-				const rewards = parseRewards(content);
-
-				setRewards(rewards);
-
-				setIsRewardsParsed("parsed");
-			});
-		}
-
-		setIsRewardsParsed("error");
 	}, []);
 
 	return { rewards, isRewardsParsed };

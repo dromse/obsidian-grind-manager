@@ -6,7 +6,7 @@ import {
 	CompletedFilter,
 	LimitFilter,
 	SearchFilter,
-	StatusFilter
+	StatusFilter,
 } from "./Filters";
 import RecurFilter from "./Filters/RecurFilter";
 import styles from "./styles.module.css";
@@ -36,7 +36,7 @@ export default function TaskList({ tasks, updateTask }: Props) {
 			setLimit(settings.limit);
 			setCurrentCompletedFilter(settings.completedFilter);
 			setCurrentStatusFilter(settings.statusFilter);
-			setIsRecur(settings.isRecurTasks)
+			setIsRecur(settings.isRecurTasks);
 		}
 	}, []);
 
@@ -71,7 +71,8 @@ export default function TaskList({ tasks, updateTask }: Props) {
 	const filterBySearch = (task: Task): boolean =>
 		task.body.toLowerCase().includes(searchFilter);
 
-	const filterByRecurrance = (task: Task): boolean => isRecur ? !!task.every && task.every === 'day' : true;
+	const filterByRecurrance = (task: Task): boolean =>
+		isRecur ? !!task.every && task.every === "day" : true;
 
 	const filteredTasks = useMemo(() => {
 		return tasks

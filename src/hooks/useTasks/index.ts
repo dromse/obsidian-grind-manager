@@ -1,19 +1,21 @@
-import { Vault } from "obsidian";
-import { useEffect, useState } from "react";
 import { useApp } from "..";
+import { moment, Vault } from "obsidian";
+import { useEffect, useState } from "react";
 import { ParseState, RawFile } from "../types";
 import { getLines } from "../utils";
-import bind from "./middleware/bind";
-import body from "./middleware/body";
-import completed from "./middleware/completed";
-import completedAt from "./middleware/completedAt";
-import counter from "./middleware/counter";
-import difficulty from "./middleware/difficulty";
-import every from "./middleware/every";
-import indention from "./middleware/indention";
-import status from "./middleware/status";
-import timer from "./middleware/timer";
 import { Middleware, Task } from "./types";
+import {
+	bind,
+	body,
+	completedAt,
+	completed,
+	counter,
+	difficulty,
+	every,
+	indention,
+	status,
+	timer,
+} from "./middleware";
 
 type UseTasksProps = {
 	tasks: Task[];
@@ -28,6 +30,16 @@ export default function useTasks(): UseTasksProps {
 	const [tasks, setTasks] = useState<Task[]>([]);
 	const [isTasksParsed, setIsTasksParsed] = useState<ParseState>("parsing");
 	const [trigger, setTrigger] = useState(false);
+
+	const app = useApp();
+
+	if (!app) {
+		setIsTasksParsed("error");
+
+		return { tasks, isTasksParsed, updateTask };
+	}
+
+	const { vault } = app;
 
 	/**
 	 * Middlewares used for parsing tasks metadata and stringifying back to markdown line.
@@ -48,8 +60,32 @@ export default function useTasks(): UseTasksProps {
 
 	/** Update task props and save to vault */
 	async function updateTask(task: Task, newTask: Task) {
-		const newStr = stringifyMiddlewares(newTask, middlewares);
+		// If task has `bind` property -> update YAML property in today daily note.
+		if (newTask.bind) {
+			const dailyNotePath = moment().format("[Everyday/]YYYY-MM-DD[.md]");
+			const todayTFile = vault.getFileByPath(dailyNotePath);
+			let newLine = `${newTask.bind}: `;
 
+			// if we have counter -> save counter value
+			if (newTask.counter) {
+				const { current, unit } = newTask.counter;
+
+				if (current !== undefined) {
+					newLine += `${current}${unit ? (current === 1 || current === 0 ? ` ${unit}` : ` ${unit}s`) : ""}`;
+				}
+			} else {
+				newLine = newLine + Number(newTask.completed);
+			}
+
+			if (todayTFile) {
+				await vault.process(todayTFile, (data) => {
+					const oldLine = new RegExp(`${newTask.bind}:.*`);
+					return data.replace(oldLine, newLine);
+				});
+			}
+		}
+
+		const newStr = stringifyMiddlewares(newTask, middlewares);
 		await vault.process(task.tFile, (data) =>
 			data.replace(task.lineContent, newStr),
 		);
@@ -57,24 +93,26 @@ export default function useTasks(): UseTasksProps {
 		setTrigger((prev) => !prev);
 	}
 
-	const app = useApp();
-
-	if (!app) {
-		setIsTasksParsed("error");
-
-		return { tasks, isTasksParsed, updateTask };
-	}
-
-	const { vault } = app;
-
 	useEffect(() => {
-		getRawFiles(vault).then((files) => {
-			const parsedTasks = parseTasks(files);
-			const withMiddlewares = parseMiddlewares(parsedTasks, middlewares);
+		async function fetchData() {
+			try {
+				const files = await getRawFiles(vault);
 
-			setTasks(withMiddlewares);
-			setIsTasksParsed("parsed");
-		});
+				const parsedTasks = parseTasks(files);
+				const parsedTaskswithMiddlewares = parseMiddlewares(
+					parsedTasks,
+					middlewares,
+				);
+
+				setTasks(parsedTaskswithMiddlewares);
+				setIsTasksParsed("parsed");
+			} catch (err) {
+				console.error("Error fetching data:", err);
+				setIsTasksParsed("error");
+			}
+		}
+
+		fetchData();
 	}, [trigger]);
 
 	return { tasks, isTasksParsed, updateTask };

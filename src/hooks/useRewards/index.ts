@@ -27,19 +27,32 @@ export default function useRewards() {
 
 	const { vault } = app;
 
-	useEffect(() => {
+	async function fetchData() {
 		if (settings) {
 			const tFile = vault.getFileByPath(settings.pathToRewards);
 
 			if (tFile) {
-				vault.read(tFile).then((content) => {
-					const rewards = parseRewards(content);
+				const content = await vault.cachedRead(tFile);
+				const rewards = parseRewards(content);
 
-					setRewards(rewards);
+				setRewards(rewards);
 
-					setIsRewardsParsed("parsed");
-				});
+				setIsRewardsParsed("parsed");
 			}
+		}
+	}
+
+	useEffect(() => {
+		fetchData();
+
+		// sync data with changes in vault
+		if (vault) {
+			// @ts-ignore
+			vault.on("modify", fetchData);
+
+			return () => {
+				vault.off("modify", fetchData);
+			};
 		}
 	}, []);
 

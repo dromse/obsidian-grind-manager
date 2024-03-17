@@ -49,25 +49,37 @@ export default function useHistory() {
 
 	const { vault } = app;
 
-	useEffect(() => {
+	async function fetchData() {
 		if (settings) {
 			const tFile = vault.getFileByPath(settings.pathToHistory);
 
 			if (tFile) {
-				vault.read(tFile).then((content) => {
-					const history = parseHistory(content);
-					const balance = calcBalance(history);
+				const content = await vault.cachedRead(tFile);
 
-					setHistoryFile(tFile);
-					setHistory(history);
-					setBalance(balance);
+				const history = parseHistory(content);
+				const balance = calcBalance(history);
 
-					setIsHistoryParsed("parsed");
-				});
+				setHistoryFile(tFile);
+				setHistory(history);
+				setBalance(balance);
+
+				setIsHistoryParsed("parsed");
 			}
 		}
+	}
 
-		setIsHistoryParsed("error");
+	useEffect(() => {
+		fetchData();
+
+		// sync data with changes in vault
+		if (vault) {
+			// @ts-ignore
+			vault.on("modify", fetchData);
+
+			return () => {
+				vault.off("modify", fetchData);
+			};
+		}
 	}, [trigger]);
 
 	return { history, balance, isHistoryParsed, addHistoryRow };

@@ -1,23 +1,23 @@
-import { useApp, useSettings } from "..";
 import { moment, Vault } from "obsidian";
 import { useEffect, useState } from "react";
+import { useApp, useSettings } from "..";
 import { ParseState, RawFile } from "../types";
 import { getLines } from "../utils";
-import { Middleware, Task } from "./types";
 import {
 	bind,
 	body,
-	completedAt,
 	completed,
+	completedAt,
 	counter,
 	difficulty,
 	every,
 	indention,
 	status,
-	timer,
+	timer
 } from "./middleware";
+import { Middleware, Task } from "./types";
 
-type UseTasksProps = {
+type UseTasksHookResult = {
 	tasks: Task[];
 	isTasksParsed: ParseState;
 	updateTask: (task: Task, newTask: Task) => void;
@@ -26,7 +26,7 @@ type UseTasksProps = {
 /**
  * Hook for interaction with tasks in current vault
  */
-export default function useTasks(): UseTasksProps {
+export default function useTasks(): UseTasksHookResult {
 	const [tasks, setTasks] = useState<Task[]>([]);
 	const [isTasksParsed, setIsTasksParsed] = useState<ParseState>("parsing");
 	const [trigger, setTrigger] = useState(false);
@@ -65,7 +65,7 @@ export default function useTasks(): UseTasksProps {
 		// If task has `bind` property -> update YAML property in today daily note.
 		if (newTask.bind) {
 			if (settings?.pathToDaily) {
-				updateDailyNote(task, settings.pathToDaily, vault);
+				updateDailyNote(newTask, settings.pathToDaily, vault);
 			}
 		}
 
@@ -77,26 +77,36 @@ export default function useTasks(): UseTasksProps {
 		setTrigger((prev) => !prev);
 	}
 
-	useEffect(() => {
-		async function fetchData() {
-			try {
-				const files = await getRawFiles(vault);
+	async function fetchData() {
+		try {
+			const files = await getRawFiles(vault);
 
-				const parsedTasks = parseTasks(files);
-				const parsedTaskswithMiddlewares = parseMiddlewares(
-					parsedTasks,
-					middlewares,
-				);
+			const parsedTasks = parseTasks(files);
+			const parsedTaskswithMiddlewares = parseMiddlewares(
+				parsedTasks,
+				middlewares,
+			);
 
-				setTasks(parsedTaskswithMiddlewares);
-				setIsTasksParsed("parsed");
-			} catch (err) {
-				console.error("Error fetching data:", err);
-				setIsTasksParsed("error");
-			}
+			setTasks(parsedTaskswithMiddlewares);
+			setIsTasksParsed("parsed");
+		} catch (err) {
+			console.error("Error fetching data:", err);
+			setIsTasksParsed("error");
 		}
+	}
 
+	useEffect(() => {
 		fetchData();
+
+		// sync data with changes in vault
+		if (vault) {
+			// @ts-ignore
+			vault.on("modify", fetchData);
+
+			return () => {
+				vault.off("modify", fetchData);
+			};
+		}
 	}, [trigger]);
 
 	return { tasks, isTasksParsed, updateTask };
@@ -132,7 +142,8 @@ async function getRawFiles(vault: Vault): Promise<RawFile[]> {
 	const files = Promise.all(
 		vault.getMarkdownFiles().map(async (file) => ({
 			tFile: file,
-			content: getLines(await vault.read(file)),
+			// cachedRead really increased speed of parsing
+			content: getLines(await vault.cachedRead(file)),
 		})),
 	);
 

@@ -16,4 +16,4 @@
 
 #### Defined in
 
-[src/hooks/useTasks/middleware/completed.ts:26](https://github.com/dromse/personal-grind-manager/blob/781019d/src/hooks/useTasks/middleware/completed.ts#L26)
+[src/hooks/useTasks/middleware/completed.ts:26](https://github.com/dromse/personal-grind-manager/blob/1abcd9e/src/hooks/useTasks/middleware/completed.ts#L26)

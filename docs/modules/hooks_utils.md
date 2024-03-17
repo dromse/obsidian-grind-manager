@@ -28,4 +28,4 @@ Split content string by '\n' and return list of strings
 
 #### Defined in
 
-[src/hooks/utils.ts:2](https://github.com/dromse/personal-grind-manager/blob/781019d/src/hooks/utils.ts#L2)
+[src/hooks/utils.ts:2](https://github.com/dromse/personal-grind-manager/blob/1abcd9e/src/hooks/utils.ts#L2)

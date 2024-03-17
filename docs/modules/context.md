@@ -17,7 +17,7 @@
 
 #### Defined in
 
-[src/context/index.ts:5](https://github.com/dromse/personal-grind-manager/blob/781019d/src/context/index.ts#L5)
+[src/context/index.ts:5](https://github.com/dromse/personal-grind-manager/blob/1abcd9e/src/context/index.ts#L5)
 
 ___
 
@@ -27,4 +27,4 @@ ___
 
 #### Defined in
 
-[src/context/index.ts:6](https://github.com/dromse/personal-grind-manager/blob/781019d/src/context/index.ts#L6)
+[src/context/index.ts:6](https://github.com/dromse/personal-grind-manager/blob/1abcd9e/src/context/index.ts#L6)

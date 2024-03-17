@@ -20,4 +20,4 @@
 
 #### Defined in
 
-[src/components/Tasks.tsx:4](https://github.com/dromse/personal-grind-manager/blob/781019d/src/components/Tasks.tsx#L4)
+[src/components/Tasks/index.tsx:4](https://github.com/dromse/personal-grind-manager/blob/1abcd9e/src/components/Tasks/index.tsx#L4)

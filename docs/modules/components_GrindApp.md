@@ -20,4 +20,4 @@
 
 #### Defined in
 
-[src/components/GrindApp.tsx:7](https://github.com/dromse/personal-grind-manager/blob/781019d/src/components/GrindApp.tsx#L7)
+[src/components/GrindApp.tsx:6](https://github.com/dromse/personal-grind-manager/blob/1abcd9e/src/components/GrindApp.tsx#L6)

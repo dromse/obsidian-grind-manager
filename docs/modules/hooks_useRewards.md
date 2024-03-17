@@ -27,4 +27,4 @@ Hook for interacting with rewards list
 
 #### Defined in
 
-[src/hooks/useRewards/index.ts:13](https://github.com/dromse/personal-grind-manager/blob/781019d/src/hooks/useRewards/index.ts#L13)
+[src/hooks/useRewards/index.ts:13](https://github.com/dromse/personal-grind-manager/blob/1abcd9e/src/hooks/useRewards/index.ts#L13)

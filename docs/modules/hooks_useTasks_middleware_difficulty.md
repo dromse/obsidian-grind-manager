@@ -22,7 +22,7 @@
 
 #### Defined in
 
-[src/hooks/useTasks/middleware/difficulty.ts:4](https://github.com/dromse/personal-grind-manager/blob/781019d/src/hooks/useTasks/middleware/difficulty.ts#L4)
+[src/hooks/useTasks/middleware/difficulty.ts:4](https://github.com/dromse/personal-grind-manager/blob/1abcd9e/src/hooks/useTasks/middleware/difficulty.ts#L4)
 
 ## Variables
 
@@ -32,17 +32,26 @@
 
 #### Defined in
 
-[src/hooks/useTasks/middleware/difficulty.ts:13](https://github.com/dromse/personal-grind-manager/blob/781019d/src/hooks/useTasks/middleware/difficulty.ts#L13)
+[src/hooks/useTasks/middleware/difficulty.ts:13](https://github.com/dromse/personal-grind-manager/blob/1abcd9e/src/hooks/useTasks/middleware/difficulty.ts#L13)
 
 ___
 
 ### DifficultyPrices
 
-• `Const` **DifficultyPrices**: \{ `price`: `number` ; `title`: [`Difficulty`](hooks_useTasks_middleware_difficulty.md#difficulty)  }[]
+• `Const` **DifficultyPrices**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `easy` | `number` |
+| `hard` | `number` |
+| `medium` | `number` |
+| `trivial` | `number` |
 
 #### Defined in
 
-[src/hooks/useTasks/middleware/difficulty.ts:6](https://github.com/dromse/personal-grind-manager/blob/781019d/src/hooks/useTasks/middleware/difficulty.ts#L6)
+[src/hooks/useTasks/middleware/difficulty.ts:6](https://github.com/dromse/personal-grind-manager/blob/1abcd9e/src/hooks/useTasks/middleware/difficulty.ts#L6)
 
 ___
 
@@ -52,4 +61,4 @@ ___
 
 #### Defined in
 
-[src/hooks/useTasks/middleware/difficulty.ts:34](https://github.com/dromse/personal-grind-manager/blob/781019d/src/hooks/useTasks/middleware/difficulty.ts#L34)
+[src/hooks/useTasks/middleware/difficulty.ts:34](https://github.com/dromse/personal-grind-manager/blob/1abcd9e/src/hooks/useTasks/middleware/difficulty.ts#L34)

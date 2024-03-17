@@ -24,7 +24,7 @@
 
 #### Defined in
 
-[src/hooks/useTasks/types.ts:23](https://github.com/dromse/personal-grind-manager/blob/781019d/src/hooks/useTasks/types.ts#L23)
+[src/hooks/useTasks/types.ts:23](https://github.com/dromse/personal-grind-manager/blob/1abcd9e/src/hooks/useTasks/types.ts#L23)
 
 ___
 
@@ -40,9 +40,10 @@ ___
 | `body` | `string` |
 | `completed?` | `boolean` |
 | `completedAt?` | `string` |
-| `counter?` | \{ `current`: `number` ; `goal`: `number`  } |
+| `counter?` | \{ `current`: `number` ; `goal`: `number` ; `unit`: `string`  } |
 | `counter.current` | `number` |
 | `counter.goal` | `number` |
+| `counter.unit` | `string` |
 | `difficulty?` | [`Difficulty`](hooks_useTasks_middleware_difficulty.md#difficulty) |
 | `every?` | `string` |
 | `indention?` | `number` |
@@ -56,4 +57,4 @@ ___
 
 #### Defined in
 
-[src/hooks/useTasks/types.ts:5](https://github.com/dromse/personal-grind-manager/blob/781019d/src/hooks/useTasks/types.ts#L5)
+[src/hooks/useTasks/types.ts:5](https://github.com/dromse/personal-grind-manager/blob/1abcd9e/src/hooks/useTasks/types.ts#L5)

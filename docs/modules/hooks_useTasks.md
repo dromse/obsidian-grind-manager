@@ -12,14 +12,14 @@
 
 ### default
 
-▸ **default**(): `UseTasksProps`
+▸ **default**(): `UseTasksHookResult`
 
 Hook for interaction with tasks in current vault
 
 #### Returns
 
-`UseTasksProps`
+`UseTasksHookResult`
 
 #### Defined in
 
-[src/hooks/useTasks/index.ts:27](https://github.com/dromse/personal-grind-manager/blob/781019d/src/hooks/useTasks/index.ts#L27)
+[src/hooks/useTasks/index.ts:29](https://github.com/dromse/personal-grind-manager/blob/1abcd9e/src/hooks/useTasks/index.ts#L29)

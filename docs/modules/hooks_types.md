@@ -17,7 +17,7 @@
 
 #### Defined in
 
-[src/hooks/types.ts:3](https://github.com/dromse/personal-grind-manager/blob/781019d/src/hooks/types.ts#L3)
+[src/hooks/types.ts:3](https://github.com/dromse/personal-grind-manager/blob/1abcd9e/src/hooks/types.ts#L3)
 
 ___
 
@@ -34,4 +34,4 @@ ___
 
 #### Defined in
 
-[src/hooks/types.ts:5](https://github.com/dromse/personal-grind-manager/blob/781019d/src/hooks/types.ts#L5)
+[src/hooks/types.ts:5](https://github.com/dromse/personal-grind-manager/blob/1abcd9e/src/hooks/types.ts#L5)

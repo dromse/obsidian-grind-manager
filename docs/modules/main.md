@@ -12,6 +12,10 @@
 
 - [GrindPluginSettings](main.md#grindpluginsettings)
 
+### Variables
+
+- [DEFAULT\_SETTINGS](main.md#default_settings)
+
 ## Type Aliases
 
 ### GrindPluginSettings
@@ -22,11 +26,24 @@
 
 | Name | Type |
 | :------ | :------ |
-| `completedFilter` | [`CompletedFilterOption`](components_TaskList.md#completedfilteroption) |
+| `completedFilter` | [`CompletedFilterOption`](components_Tasks_TaskList.md#completedfilteroption) |
+| `isRecurTasks` | `boolean` |
 | `limit` | `number` \| `undefined` |
+| `pathToDaily` | `string` |
+| `pathToHistory` | `string` |
 | `pathToRewards` | `string` |
-| `statusFilter` | [`StatusFilterOption`](components_TaskList.md#statusfilteroption) |
+| `statusFilter` | [`StatusFilterOption`](components_Tasks_TaskList.md#statusfilteroption) |
 
 #### Defined in
 
-[src/main.ts:8](https://github.com/dromse/personal-grind-manager/blob/781019d/src/main.ts#L8)
+[src/main.ts:9](https://github.com/dromse/personal-grind-manager/blob/1abcd9e/src/main.ts#L9)
+
+## Variables
+
+### DEFAULT\_SETTINGS
+
+• `Const` **DEFAULT\_SETTINGS**: [`GrindPluginSettings`](main.md#grindpluginsettings)
+
+#### Defined in
+
+[src/main.ts:19](https://github.com/dromse/personal-grind-manager/blob/1abcd9e/src/main.ts#L19)

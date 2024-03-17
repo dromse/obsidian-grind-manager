@@ -26,4 +26,4 @@
 
 #### Defined in
 
-[src/components/StatusBadge/index.tsx:8](https://github.com/dromse/personal-grind-manager/blob/781019d/src/components/StatusBadge/index.tsx#L8)
+[src/components/StatusBadge/index.tsx:8](https://github.com/dromse/personal-grind-manager/blob/1abcd9e/src/components/StatusBadge/index.tsx#L8)

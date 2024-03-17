@@ -6,6 +6,7 @@
 
 ### References
 
+- [useHistory](hooks.md#usehistory)
 - [useRewards](hooks.md#userewards)
 - [useTasks](hooks.md#usetasks)
 
@@ -15,6 +16,12 @@
 - [useSettings](hooks.md#usesettings)
 
 ## References
+
+### useHistory
+
+Renames and re-exports [default](hooks_useHistory.md#default)
+
+___
 
 ### useRewards
 
@@ -40,7 +47,7 @@ Access `app` from different components through `useContext`
 
 #### Defined in
 
-[src/hooks/index.ts:9](https://github.com/dromse/personal-grind-manager/blob/781019d/src/hooks/index.ts#L9)
+[src/hooks/index.ts:10](https://github.com/dromse/personal-grind-manager/blob/1abcd9e/src/hooks/index.ts#L10)
 
 ___
 
@@ -56,4 +63,4 @@ Access `settings` from different components through `useContext`
 
 #### Defined in
 
-[src/hooks/index.ts:14](https://github.com/dromse/personal-grind-manager/blob/781019d/src/hooks/index.ts#L14)
+[src/hooks/index.ts:15](https://github.com/dromse/personal-grind-manager/blob/1abcd9e/src/hooks/index.ts#L15)

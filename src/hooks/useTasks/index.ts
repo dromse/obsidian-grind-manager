@@ -1,4 +1,4 @@
-import { useApp } from "..";
+import { useApp, useSettings } from "..";
 import { moment, Vault } from "obsidian";
 import { useEffect, useState } from "react";
 import { ParseState, RawFile } from "../types";
@@ -41,6 +41,8 @@ export default function useTasks(): UseTasksProps {
 
 	const { vault } = app;
 
+	const settings = useSettings();
+
 	/**
 	 * Middlewares used for parsing tasks metadata and stringifying back to markdown line.
 	 * I don't need `body` to be in middlewares for parsing but for correct stringifying I added it.
@@ -62,26 +64,8 @@ export default function useTasks(): UseTasksProps {
 	async function updateTask(task: Task, newTask: Task) {
 		// If task has `bind` property -> update YAML property in today daily note.
 		if (newTask.bind) {
-			const dailyNotePath = moment().format("[Everyday/]YYYY-MM-DD[.md]");
-			const todayTFile = vault.getFileByPath(dailyNotePath);
-			let newLine = `${newTask.bind}: `;
-
-			// if we have counter -> save counter value
-			if (newTask.counter) {
-				const { current, unit } = newTask.counter;
-
-				if (current !== undefined) {
-					newLine += `${current}${unit ? (current === 1 || current === 0 ? ` ${unit}` : ` ${unit}s`) : ""}`;
-				}
-			} else {
-				newLine = newLine + Number(newTask.completed);
-			}
-
-			if (todayTFile) {
-				await vault.process(todayTFile, (data) => {
-					const oldLine = new RegExp(`${newTask.bind}:.*`);
-					return data.replace(oldLine, newLine);
-				});
+			if (settings?.pathToDaily) {
+				updateDailyNote(task, settings.pathToDaily, vault);
 			}
 		}
 
@@ -116,6 +100,31 @@ export default function useTasks(): UseTasksProps {
 	}, [trigger]);
 
 	return { tasks, isTasksParsed, updateTask };
+}
+
+/** Update property in today daily note */
+async function updateDailyNote(task: Task, pathToDaily: string, vault: Vault) {
+	const dailyNotePath = moment().format(`[${pathToDaily}/]YYYY-MM-DD[.md]`);
+	const todayTFile = vault.getFileByPath(dailyNotePath);
+	let newLine = `${task.bind}: `;
+
+	// if we have counter -> save counter value
+	if (task.counter) {
+		const { current, unit } = task.counter;
+
+		if (current !== undefined) {
+			newLine += `${current}${unit ? (current === 1 || current === 0 ? ` ${unit}` : ` ${unit}s`) : ""}`;
+		}
+	} else {
+		newLine = newLine + Number(task.completed);
+	}
+
+	if (todayTFile) {
+		await vault.process(todayTFile, (data) => {
+			const oldLine = new RegExp(`${task.bind}:.*`);
+			return data.replace(oldLine, newLine);
+		});
+	}
 }
 
 /** Get all markdown files in vault with their content */

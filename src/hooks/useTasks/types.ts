@@ -16,7 +16,7 @@ export type Task = {
 	difficulty?: Difficulty;
 	status?: Status;
 	every?: string;
-	counter?: { goal: number; current: number };
+	counter?: { goal: number; current: number; unit: string };
 	timer?: { goal: string; current: string };
 };
 

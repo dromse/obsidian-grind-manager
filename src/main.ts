@@ -13,6 +13,7 @@ export type GrindPluginSettings = {
 	isRecurTasks: boolean;
 	pathToRewards: string;
 	pathToHistory: string;
+	pathToDaily: string;
 };
 
 export const DEFAULT_SETTINGS: GrindPluginSettings = {
@@ -22,6 +23,7 @@ export const DEFAULT_SETTINGS: GrindPluginSettings = {
 	isRecurTasks: false,
 	pathToRewards: "rewards.md",
 	pathToHistory: "history.md",
+	pathToDaily: "Everyday",
 };
 
 export default class GrindPlugin extends Plugin {

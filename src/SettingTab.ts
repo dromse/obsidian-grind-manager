@@ -102,5 +102,20 @@ export default class GrindSettingTab extends PluginSettingTab {
 					await this.plugin.saveSettings();
 				}),
 		);
+
+		new Setting(containerEl).setName("Path to daily notes").addText((text) =>
+			text
+				.setPlaceholder("path/to/Daily/")
+				.setValue(String(this.plugin.settings.pathToDaily))
+				.onChange(async (value) => {
+					const trimmedValue = value.trim();
+
+					this.plugin.settings.pathToDaily = trimmedValue
+						? trimmedValue
+						: DEFAULT_SETTINGS.pathToDaily;
+
+					await this.plugin.saveSettings();
+				}),
+		);
 	}
 }

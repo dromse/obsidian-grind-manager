@@ -1,9 +1,10 @@
 {
-	"id": "personal-grind-manager",
+	"id": "obsidian-grind-manager",
 	"name": "Grind Manager",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "Tasks, Rewards etc.",
-	"author": "Dromse",
+	"description": "Task management with rewards system.",
+	"author": "dromse",
+	"authorUrl": "https://github.com/dromse",
 	"isDesktopOnly": false
 }

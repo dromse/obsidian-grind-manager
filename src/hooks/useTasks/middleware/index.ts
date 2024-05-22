@@ -5,6 +5,7 @@ import { default as difficulty } from "./difficulty";
 import { default as indention } from "./indention";
 import { default as every } from "./every";
 import { default as status } from "./status";
+import { default as bind } from "./bind";
 
 export {
 	body,
@@ -14,4 +15,5 @@ export {
 	every,
 	indention,
 	status,
+	bind,
 };

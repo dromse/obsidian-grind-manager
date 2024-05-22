@@ -1,4 +1,5 @@
 import {
+	bind,
 	body,
 	completedAt,
 	counter,
@@ -94,6 +95,7 @@ export const middlewares: Array<Middleware> = [
 	body, // Middleware for handling task body content
 	counter, // Middleware for handling task counters
 	difficulty, // Middleware for handling task difficulty
+	bind, // Middleware for handling binding to YAML properties in daily notes.
 	every, // Middleware for handling task recurrence
 	completedAt, // Middleware for handling task completion timestamps
 ];

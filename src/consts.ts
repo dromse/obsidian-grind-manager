@@ -19,7 +19,8 @@ export const DEFAULT_SETTINGS: GamifiedTasksSettings = {
 	noteFilter: "",
 	isFromCurrentNote: false,
 	shouldShowAllFilters: false,
-	isCompletedAtEnabled: true
+	isCompletedAtEnabled: true,
 };
 
-export const DATE_FORMAT = "YYYY-MM-DD HH:mm" as const;
+export const DAY_FORMAT = "YYYY-MM-DD" as const;
+export const DATE_FORMAT = `${DAY_FORMAT} HH:mm` as const;

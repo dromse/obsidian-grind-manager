@@ -62,9 +62,21 @@ export type TaskFilters = {
 	 */
 	setHasOnlyThisTags: Function;
 
+	/**
+	 * A string to filter tasks by a specific note.
+	 */
 	noteFilter: string;
+	/**
+	 * A function to set filtering by a specific note.
+	 */
 	setNoteFilter: Function;
+	/**
+	 * Specify whether to only show tasks from the current note.
+	 */
 	isFromCurrentNote: boolean;
+	/**
+	 * A function to set whether to only show tasks from the current note.
+	 */
 	setIsFromCurrentNote: Function;
 };
 
@@ -141,7 +153,28 @@ export type Task = {
 		 */
 		current: number;
 	};
+
+	/**
+	 * The binding associated with YAML property in daily note.
+	 */
+	bind?: {
+		/**
+		 * The frontmatter YAML property name.
+		 */
+		property: string;
+		/**
+		 * Type of bind unit: duration.
+		 */
+		unit: DurationUnit | null;
+		/**
+		 * Delta of chaning value inside property
+		 */
+		delta: number | null;
+	};
 };
+
+export const DurationUnitList = ["minute", "hour", "second"] as const;
+export type DurationUnit = (typeof DurationUnitList)[number];
 
 /**
  * Type defenition for a middleware used for parsing and stringification.

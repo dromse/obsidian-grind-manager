@@ -47,3 +47,46 @@ export function getAmountOfPastDays(str: string): number | null {
 		return null;
 	}
 }
+
+/**
+ * Converts duration to human readeable format
+ * @example
+ * "62 minute" -> "1 hour 2 minutes"
+ * "0 hour 31 minute 62 second" -> "32 minutes 2 seconds"
+ */
+export function convertDuration(durationStr: string): string {
+	const timeUnits = [
+		{ label: "day", seconds: 86400 },
+		{ label: "hour", seconds: 3600 },
+		{ label: "minute", seconds: 60 },
+		{ label: "second", seconds: 1 },
+	] as const;
+
+	// Convert input to total seconds
+	let totalSeconds = 0;
+	const parts = durationStr.match(/(\d+)\s*(day|hour|minute|second)/g);
+	if (parts) {
+		parts.forEach((part) => {
+			const match = part.match(/(\d+)\s*(day|hour|minute|second)/);
+			if (match) {
+				const [_, value, unit] = match;
+				const timeUnit = timeUnits.find((tu) => tu.label === unit);
+				if (timeUnit) {
+					totalSeconds += parseInt(value) * timeUnit.seconds;
+				}
+			}
+		});
+	}
+
+	// Convert total seconds to human-readable format
+	const result: Array<string> = [];
+	timeUnits.forEach((unit) => {
+		const value = Math.floor(totalSeconds / unit.seconds);
+		if (value > 0) {
+			result.push(`${value} ${unit.label}${value > 1 ? "s" : ""}`);
+			totalSeconds -= value * unit.seconds;
+		}
+	});
+
+	return result.join(" ");
+}

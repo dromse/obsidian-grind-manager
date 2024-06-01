@@ -6,6 +6,7 @@ export type GamifiedTasksSettings = {
 	isRecurTasks: boolean;
 	pathToRewards: string;
 	pathToHistory: string;
+	pathToConditions: string;
 	pathToDaily: string;
 	dailyFormat: string;
 	useMarkdownLinks: boolean;

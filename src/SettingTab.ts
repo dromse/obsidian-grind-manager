@@ -49,6 +49,21 @@ export default class GamifiedTasksSettingTab extends PluginSettingTab {
 				}),
 		);
 
+		new Setting(containerEl).setName("Path to conditions directory").addText((text) =>
+			text
+				.setPlaceholder("path/to/conditions")
+				.setValue(String(this.plugin.settings.pathToConditions))
+				.onChange(async (value) => {
+					const trimmedValue = value.trim();
+
+					this.plugin.settings.pathToConditions = trimmedValue
+						? trimmedValue
+						: DEFAULT_SETTINGS.pathToConditions;
+
+					await this.plugin.saveSettings();
+				}),
+		);
+
 		new Setting(containerEl)
 			.setName("Ignore")
 			.setDesc("Exclude files or folders from parsing tasks")

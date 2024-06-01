@@ -141,6 +141,21 @@ export type Task = {
 		 */
 		current: number;
 	};
+
+	/**
+	 * Information about conditions
+	 */
+	condition?: {
+		/**
+		 * The file associated with the condition.
+		 */
+		file: string;
+
+		/**
+		 * Indicates whether the task should be shown or hidden.
+		 */
+		show: boolean;
+	};
 };
 
 /**

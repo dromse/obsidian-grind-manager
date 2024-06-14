@@ -105,7 +105,7 @@ export default function TaskList(props: Props): React.JSX.Element {
 				</div>
 			</div>
 
-			<ul className="list flex-column">
+			<ul className="list flex-column contains-task-list">
 				{tasks.length > 0 ? (
 					tasks.map((task) => (
 						<TaskItem

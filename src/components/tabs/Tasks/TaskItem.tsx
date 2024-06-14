@@ -1,6 +1,6 @@
 import { useApp, useHistory } from "@hooks";
-import { StatusKeys } from "@hooks/useTasks/consts";
-import { Status, Task } from "@hooks/useTasks/types";
+import { StatusMarkdown } from "@hooks/useTasks/consts";
+import { Task } from "@hooks/useTasks/types";
 import { revealTask } from "@utils/editor";
 import { logger, loggerMsg } from "@utils/logger";
 import { extractTitlesFromLinks } from "@utils/string";
@@ -27,20 +27,25 @@ export default function TaskItem(props: Props): React.JSX.Element {
 
 	const { workspace, vault } = app;
 
-	const handleUpdateStatus = (
-		e: React.ChangeEvent<HTMLSelectElement>,
-	): void => {
-		const value = e.currentTarget.value;
+	const handleUpdateCheckbox = (): void => {
+		const isDone = task.status === "done";
+		const isDenied = task.status === "denied";
 
-		if (StatusKeys.some((status) => status === value)) {
+		if (isDone || isDenied) {
 			updateStatus({
 				task,
-				payload: { status: value as Status },
+				payload: { status: "todo" },
 				updateTask,
 				addHistoryRow,
 			});
 		} else {
-			new Notice(loggerMsg(`Invalid status '${value}'`));
+			updateStatus({
+				task,
+				payload: { status: "done" },
+				updateTask,
+				addHistoryRow,
+			});
+
 		}
 	};
 
@@ -67,18 +72,19 @@ export default function TaskItem(props: Props): React.JSX.Element {
 	};
 
 	return (
-		<li className={`${styles.task} flex-items-center border`}>
-			<select
-				onChange={handleUpdateStatus}
-				value={task.status}
-				className={styles.taskStatus}
-			>
-				{StatusKeys.map((status) => (
-					<option key={status}>{status}</option>
-				))}
-			</select>
+		<li
+			className={` task-list-item ${styles.task}  flex-items-center border`}
+			data-task={StatusMarkdown[task.status ? task.status : "todo"]}
+		>
+			<input
+				type="checkbox"
+				onChange={handleUpdateCheckbox}
+				name=""
+				id=""
+				checked={task.status !== "todo"}
+			/>
 
-			<a onClick={handleRevealTask}>{extractTitlesFromLinks(task.body)}</a>
+			<div onClick={handleRevealTask}>{extractTitlesFromLinks(task.body)}</div>
 
 			{task.counter && (
 				<div className={`flex-items-center ${styles.counter}`}>
@@ -86,17 +92,11 @@ export default function TaskItem(props: Props): React.JSX.Element {
 						{task.counter.current} / {task.counter.goal}
 					</p>
 
-					<button
-						onClick={handleUpdateCounter(1)}
-						disabled={isButtonBlocked}
-					>
+					<button onClick={handleUpdateCounter(1)} disabled={isButtonBlocked}>
 						+
 					</button>
 
-					<button
-						onClick={handleUpdateCounter(-1)}
-						disabled={isButtonBlocked}
-					>
+					<button onClick={handleUpdateCounter(-1)} disabled={isButtonBlocked}>
 						-
 					</button>
 				</div>

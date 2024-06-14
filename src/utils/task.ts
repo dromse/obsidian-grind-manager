@@ -84,8 +84,8 @@ export const updateCounter = async (
 	const getEarningString = (): string =>
 		task.difficulty
 			? `You ${change > 0 ? "earned" : "returned"}: ${coins(
-					DifficultyPrice[task.difficulty],
-			  )}`
+				DifficultyPrice[task.difficulty],
+			)}`
 			: "";
 
 	new Notice(getEarningString());
@@ -125,6 +125,7 @@ export async function updateStatus(
 		});
 
 		new Notice(`You earned: ${coins(DifficultyPrice[task.difficulty])}`);
+		new Notice(`You completed task: '${task.body}'`);
 	}
 
 	if (task.status === "done" && status !== "done") {
